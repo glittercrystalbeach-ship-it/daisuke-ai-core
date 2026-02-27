@@ -33,7 +33,12 @@ npm start
 | メソッド | パス | 説明 |
 |---------|------|------|
 | GET | `/health` | ヘルスチェック |
-| POST | `/webhooks/line` | LINE Webhook受信 |
+| POST | `/webhooks/line` | LINE Webhook受信（署名検証付き） |
+
+## 署名検証
+
+`/webhooks/line` は `@line/bot-sdk` の middleware で署名を検証します。
+`LINE_CHANNEL_SECRET` が未設定、または署名が不正な場合は `401` を返します。
 
 ## スクリプト
 
